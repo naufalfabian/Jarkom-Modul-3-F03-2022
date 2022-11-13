@@ -11,6 +11,32 @@ Jarkom-Modul-3-F03-2022
 
 ``` IP Kelompok F03 = 10.30``` 
 
+**Topologi**
+
+
+**Konfigurasi Node**
+
+**Ostania**
+```
+
+```
+
+**WISE**
+```
+
+```
+
+**Berlint**
+```
+
+```
+
+**Westalis**
+```
+
+```
+
+
 ## 1
 > Loid bersama Franky berencana membuat peta tersebut dengan kriteria WISE sebagai DNS Server, Westalis sebagai DHCP Server, Berlint sebagai Proxy Server
 
