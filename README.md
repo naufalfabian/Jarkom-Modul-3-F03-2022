@@ -19,7 +19,7 @@ Loid bersama Franky berencana membuat peta tersebut dengan kriteria WISE sebagai
 dan Ostania sebagai DHCP Relay
 
 
-##3
+## 3
 Loid dan Franky menyusun peta tersebut dengan hati-hati dan teliti.
 
 Semua client yang ada HARUS menggunakan konfigurasi IP dari DHCP Server.
