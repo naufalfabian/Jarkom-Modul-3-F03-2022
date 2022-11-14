@@ -129,7 +129,7 @@ Lalu lakukan restart bind9 menggunakan `service bind9 restart` dan restart DHPCP
 **Kemono Park** 
     <br>
     <picture>
-     <img alt="Kemono Park" src="https://github.com/naufalfabian/Jarkom-Modul-3-F03-2022/blob/main/dokumetasi/5-1.png?raw=true">
+     <img alt="Kemono Park" src="https://github.com/naufalfabian/Jarkom-Modul-3-F03-2022/blob/main/dokumetasi/5-3.png?raw=true">
     </picture>
     
 **NewstonCastle**
@@ -141,10 +141,10 @@ Lalu lakukan restart bind9 menggunakan `service bind9 restart` dan restart DHPCP
 **Eden**
 <br>
     <picture>
-     <img alt="Eden" src="https://github.com/naufalfabian/Jarkom-Modul-3-F03-2022/blob/main/dokumetasi/5-3.png?raw=true">
+     <img alt="Eden" src="https://github.com/naufalfabian/Jarkom-Modul-3-F03-2022/blob/main/dokumetasi/5-1.png?raw=true">
     </picture>
 
-**SSSk** 
+**SSS** 
     <br>
     <picture>
      <img alt="Kemono Park" src="https://github.com/naufalfabian/Jarkom-Modul-3-F03-2022/blob/main/dokumetasi/5-4.png?raw=true">
@@ -185,7 +185,11 @@ auto eth0
 iface eth0 inet dhcp
 hwaddress ether 36:66:13:83:3e:5f " > /etc/network/interfaces
 ```
-
+**Eden**
+<br>
+    <picture>
+     <img alt="Eden" src="https://github.com/naufalfabian/Jarkom-Modul-3-F03-2022/blob/main/dokumetasi/6.png?raw=true">
+    </picture>
 
 ## 8
 > SSS, Garden, dan Eden digunakan sebagai client Proxy agar pertukaran informasi dapat terjamin keamanannya, juga untuk mencegah kebocoran data.
