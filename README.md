@@ -266,9 +266,165 @@ hwaddress ether 36:66:13:83:3e:5f " > /etc/network/interfaces
 > Pada Proxy Server di Berlint, Loid berencana untuk mengatur bagaimana Client dapat mengakses internet. Artinya setiap client harus menggunakan Berlint sebagai HTTP & HTTPS proxy. Adapun kriteria pengaturannya adalah sebagai berikut:
 
 > 1. Client hanya dapat mengakses internet diluar (selain) hari & jam kerja (senin-jumat 08.00 - 17.00) dan hari libur (dapat mengakses 24 jam penuh)
+
+Buat file pada folder squid ```/etc/squid/acl-time,conf```
+``` acl WORK_HOUR time MTWHF 08:00-16:59
+    acl WEEK_END time SA 00:00-23:59
+ ```
+ 
+ pada squid.conf tambahkan
+ ```
+ include /etc/squid/acl-time.conf
+
+http_port 8080
+dns_nameservers 10.30.2.2
+ 
+acl WORK_HOUR_SITES dstdomain \"/etc/squid/working-hour-sites.acl\"
+ 
+http_access allow !WORK_HOUR
+http_access deny all
+ 
+visible_hostname Berlint
+```
+
+
 > 2. Adapun pada hari dan jam kerja sesuai nomor (1), client hanya dapat mengakses domain loid-work.com dan franky-work.com (IP tujuan domain dibebaskan)
+
+Wise
+Masukan konfigurasi berikut pada Wise sebgai DNS Server pada ```/etc/bind/named.conf.local```
+```
+zone \"loid-work.com\" {
+        type master;
+        file \"/etc/bind/wise/loid-work.com\";
+};
+zone \"franky-work.com\" {
+        type master;
+        file \"/etc/bind/wise/franky-work.com\";
+};
+```
+
+dan konfigurasi tiap websitenya 
+Loid pada ```/etc/bind/wise/loid-work.com```
+```
+;
+; BIND data file for local loopback interface
+;
+\$TTL    604800
+@       IN      SOA     loid-work.com. root.loid-work.com. (
+                        2022102501      ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@               IN      NS      loid-work.com.
+@               IN      A       10.30.2.2 ;IP Wise
+```
+Franky pada ```/etc/bind/wise/franky-work.com```
+```
+;
+; BIND data file for local loopback interface
+;
+\$TTL    604800
+@       IN      SOA     franky-work.com. root.franky-work.com. (
+                        2022102501      ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@               IN      NS      franky-work.com.
+@               IN      A       10.30.2.2 ;IP Wise
+```
+
+setting apache tiap websitenya
+Loid pada ```/etc/apache2/sites-available/loid-work.com.conf```
+```
+<VirtualHost *:80>
+        ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/html
+        ServerName loid-work.com
+ 
+        ErrorLog \${APACHE_LOG_DIR}/error.log
+        CustomLog \${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+```
+Franky pada ```/etc/apache2/sites-available/franky-work.com.conf```
+```
+<VirtualHost *:80>
+        ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/html
+        ServerName franky-work.com
+ 
+        ErrorLog \${APACHE_LOG_DIR}/error.log
+        CustomLog \${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+```
+
+Berlint
+Masukan konfigurasi berikut pada Wise sebgai DNS Server pada ```/etc/squid/working-hour-sites.acl```
+```
+loid-work.com
+franky-work.com
+```
+
+tambahkan konfigurasi ```/etc/squid/squic.conf```
+```
+acl WORK_HOUR_SITES dstdomain \"/etc/squid/working-hour-sites.acl\"
+http_access allow WORK_HOUR_SITES WORK_HOUR
+```
 > 3. Saat akses internet dibuka, client dilarang untuk mengakses web tanpa HTTPS. (Contoh web HTTP: http://example.com)
+
+Berlint
+buat file konfigurasi pada ```/etc/squid/acl-port.conf```
+```
+acl HTTPS_PORT port 443
+acl CONNECT method CONNECT
+```
+
+tambahkan konfigurasi pada ```squid.conf```
+```
+include /etc/squid/acl-port.conf
+
+http_access deny !HTTPS_PORT
+http_access deny CONNECT !HTTPS_PORT
+```
+
 > 4.Agar menghemat penggunaan, akses internet dibatasi dengan kecepatan maksimum 128 Kbps pada setiap host (Kbps = kilobit per second; lakukan pengecekan pada tiap host, ketika 2 host akses internet pada saat bersamaan, keduanya mendapatkan speed maksimal yaitu 128 Kbps)
+
+Berlint
+buat konfigurasi pada ```/etc/squid/acl-bandwith.conf```
+```
+delay_pools 1
+delay_class 1 1
+delay_access 1 allow all
+delay_parameters 1 16000/16000
+```
+
+pada konfigurasi ```etc/squid/squid.conf```
+```
+include /etc/squid/acl-bandwidth.conf
+```
+
+lalu restart squid
+
 > 5. Setelah diterapkan, ternyata peraturan nomor (4) mengganggu produktifitas saat hari kerja, dengan demikian pembatasan kecepatan hanya diberlakukan untuk pengaksesan internet pada hari libur
+
+Berlint 
+Tambahkan konfigurasi pada ```/etc/squid/acl-bandwith.conf```
+```
+delay_pools 1
+delay_class 1 1
+delay_access 1 allow WEEK_END
+delay_parameters 1 16000/16000
+```
+
+tambahkan konfigurasi pada ```/etc/squid/acl-time.conf```
+```
+acl WORK_HOUR time MTWHF 08:00-16:59
+acl WEEK_END time SA 00:00-23:59
+```
+
+
 
 
