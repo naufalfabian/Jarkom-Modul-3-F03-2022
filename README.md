@@ -56,17 +56,59 @@ Jarkom-Modul-3-F03-2022
 ## 4
 > Client yang melalui Switch3 mendapatkan range IP dari [prefix IP].3.10 - [prefix IP].3.30 dan [prefix IP].3.60 - [prefix IP].3.85
 
-
 ## 5
 > Client mendapatkan DNS dari WISE dan client dapat terhubung dengan internet melalui DNS tersebut
+
+Lakukan konfigurasi pada WISE
+```bash
+echo "
+options {
+        directory \"/var/cache/bind\";
+
+        forwarders {
+                8.8.8.8;
+                8.8.8.4;
+        };
+
+        // dnssec-validation auto;
+        allow-query { any; };
+        auth-nxdomain no;    # conform to RFC1035
+        listen-on-v6 { any; };
+};" > /etc/bind/named.conf.options
+```
+
+Lalu lakukan restart bind9 menggunakan `service bind9 restart` dan restart DHPCP server dan DHCP relay
 
 
 ## 6
 > Lama waktu DHCP server meminjamkan alamat IP kepada Client yang melalui Switch1 selama 5 menit sedangkan pada client yang melalui Switch3 selama 10 menit. Dengan waktu maksimal yang dialokasikan untuk peminjaman alamat IP selama 115 menit. 
 
+mengganti konfigurasi waktu pada file `/etc/dhcp/dhcpd.conf `
+```bash
+default-lease-time 300;
+max-lease-time 6900;
+```
+
 
 ## 7
 > Loid dan Franky berencana menjadikan Eden sebagai server untuk pertukaran informasi dengan alamat IP yang tetap dengan IP [prefix IP].3.13
+
+Menjalankan config berikut
+```bash
+echo "
+host Eden {
+    hardware ethernet 36:66:13:83:3e:5f;
+    fixed-address 10.30.3.13;
+}" >> /etc/dhcp/dhcpd.conf
+
+```
+lalu menyetting config eden
+```bash
+echo "
+auto eth0
+iface eth0 inet dhcp
+hwaddress ether 36:66:13:83:3e:5f " > /etc/network/interfaces
+```
 
 
 ## 8
@@ -78,3 +120,5 @@ Jarkom-Modul-3-F03-2022
 > 3. Saat akses internet dibuka, client dilarang untuk mengakses web tanpa HTTPS. (Contoh web HTTP: http://example.com)
 > 4.Agar menghemat penggunaan, akses internet dibatasi dengan kecepatan maksimum 128 Kbps pada setiap host (Kbps = kilobit per second; lakukan pengecekan pada tiap host, ketika 2 host akses internet pada saat bersamaan, keduanya mendapatkan speed maksimal yaitu 128 Kbps)
 > 5. Setelah diterapkan, ternyata peraturan nomor (4) mengganggu produktifitas saat hari kerja, dengan demikian pembatasan kecepatan hanya diberlakukan untuk pengaksesan internet pada hari libur
+
+
