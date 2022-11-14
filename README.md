@@ -74,19 +74,19 @@ subnet 10.30.3.0 netmask 255.255.255.0 {
 
 Lalu untuk client yang menggunakan interface eth0 static, di ubah menjadi dhcp
 
-*Kemono Park*
+**Kemono Park**
     <picture>
-     <img alt="https://github.com/naufalfabian/Jarkom-Modul-3-F03-2022/blob/main/dokumetasi/4-1.png?raw=true">
+     <img alt="Kemono Park" src="https://github.com/naufalfabian/Jarkom-Modul-3-F03-2022/blob/main/dokumetasi/4-1.png?raw=true">
     </picture>
     
-*NewstonCastle*
+**NewstonCastle**
     <picture>
-     <img alt="https://github.com/naufalfabian/Jarkom-Modul-3-F03-2022/blob/main/dokumetasi/4-2.png?raw=true">
+     <img alt="Newston Castle" src="https://github.com/naufalfabian/Jarkom-Modul-3-F03-2022/blob/main/dokumetasi/4-2.png?raw=true">
     </picture>
     
-*Eden*
+**Eden**
     <picture>
-     <img alt="https://github.com/naufalfabian/Jarkom-Modul-3-F03-2022/blob/main/dokumetasi/4-3.png?raw=true">
+     <img alt="Eden" src="https://github.com/naufalfabian/Jarkom-Modul-3-F03-2022/blob/main/dokumetasi/4-3.png?raw=true">
     </picture>
 
 ## 5
