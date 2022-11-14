@@ -69,11 +69,37 @@ iface eth0 inet static
 
 ## 1
 > Loid bersama Franky berencana membuat peta tersebut dengan kriteria WISE sebagai DNS Server, Westalis sebagai DHCP Server, Berlint sebagai Proxy Server
+**WISE**
+```bash
+echo nameserver 192.168.122.1 > /etc/resolv.conf
+apt-get update
+apt-get install bind9 -y
+service bind9 start
+```
 
+**Berlint**
+```bash
+echo nameserver 192.168.122.1 > /etc/resolv.conf
+apt-get update
+apt-get install squid -y
+service squid start
+```
+
+**Westalis**
+```bash
+echo nameserver 192.168.122.1 > /etc/resolv.conf
+apt-get update
+apt-get install isc-dhcp-server -y
+```
 
 ## 2
 > dan Ostania sebagai DHCP Relay
-
+```bash
+iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE -s 10.30.0.0/16
+apt-get update
+apt-get install isc-dhcp-relay -y
+service isc-dhcp-relay start
+```
 
 ## 3
 > Loid dan Franky menyusun peta tersebut dengan hati-hati dan teliti.
