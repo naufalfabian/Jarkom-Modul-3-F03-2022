@@ -18,21 +18,51 @@ Jarkom-Modul-3-F03-2022
 
 **Ostania**
 ```
+auto eth0
+iface eth0 inet dhcp
+
+auto eth1
+iface eth1 inet static
+	address 10.30.1.1
+	netmask 255.255.255.0
+
+auto eth2
+iface eth2 inet static
+	address 10.30.2.1
+	netmask 255.255.255.0
+
+auto eth3
+iface eth3 inet static
+	address 10.30.3.1
+	netmask 255.255.255.0
 
 ```
 
 **WISE**
 ```
-
+auto eth0
+iface eth0 inet static
+	address 10.30.2.2
+	netmask 255.255.255.0
+	gateway 10.30.2.1
 ```
 
 **Berlint**
 ```
-
+auto eth0
+iface eth0 inet static
+	address 10.30.2.3
+	netmask 255.255.255.0
+	gateway 10.30.2.1
 ```
 
 **Westalis**
 ```
+auto eth0
+iface eth0 inet static
+	address 10.30.2.4
+	netmask 255.255.255.0
+	gateway 10.30.2.1
 
 ```
 
@@ -51,6 +81,20 @@ Jarkom-Modul-3-F03-2022
 > Semua client yang ada HARUS menggunakan konfigurasi IP dari DHCP Server.
 
 > Client yang melalui Switch1 mendapatkan range IP dari [prefix IP].1.50 - [prefix IP].1.88 dan [prefix IP].1.120 - [prefix IP].1.155
+
+Pada Westalis lakukan konfigurasi berikut
+```bash
+echo "
+subnet 10.30.1.0 netmask 255.255.255.0 {
+    range  10.30.1.50 10.30.1.88;
+    range  10.30.1.120 10.30.1.155;
+    option routers 10.30.1.1;
+    option broadcast-address 10.30.1.255;
+    option domain-name-servers 10.30.2.2;
+    default-lease-time 300;
+    max-lease-time 6900;
+}" >> /etc/dhcp/dhcpd.conf
+```
 
 **SSS** 
     <br>
@@ -78,8 +122,8 @@ subnet 10.30.3.0 netmask 255.255.255.0 {
     option routers 10.30.3.1;
     option broadcast-address 10.30.3.255;
     option domain-name-servers 10.30.2.2;
-    default-lease-time 720;
-    max-lease-time 7200;
+    default-lease-time 600;
+    max-lease-time 6900;
 }" >> /etc/dhcp/dhcpd.conf
 ```
 
