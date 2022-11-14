@@ -56,6 +56,22 @@ Jarkom-Modul-3-F03-2022
 ## 4
 > Client yang melalui Switch3 mendapatkan range IP dari [prefix IP].3.10 - [prefix IP].3.30 dan [prefix IP].3.60 - [prefix IP].3.85
 
+Pada Westalis lakukan konfigurasi berikut
+```bash
+echo "
+subnet 10.30.3.0 netmask 255.255.255.0 {
+    range  10.30.3.10 10.30.3.30;
+    range  10.30.3.60 10.30.3.85;
+    option routers 10.30.3.1;
+    option broadcast-address 10.30.3.255;
+    option domain-name-servers 10.30.2.2;
+    default-lease-time 720;
+    max-lease-time 7200;
+}" >> /etc/dhcp/dhcpd.conf
+```
+
+Lalu untuk client yang menggunakan interface eth0 static, di ubah menjadi dhcp
+
 ## 5
 > Client mendapatkan DNS dari WISE dan client dapat terhubung dengan internet melalui DNS tersebut
 
