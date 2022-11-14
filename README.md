@@ -52,6 +52,17 @@ Jarkom-Modul-3-F03-2022
 
 > Client yang melalui Switch1 mendapatkan range IP dari [prefix IP].1.50 - [prefix IP].1.88 dan [prefix IP].1.120 - [prefix IP].1.155
 
+**SSSk** 
+    <br>
+    <picture>
+     <img alt="Kemono Park" src="https://github.com/naufalfabian/Jarkom-Modul-3-F03-2022/blob/main/dokumetasi/4-4.png?raw=true">
+    </picture>
+    
+**Garden**
+<br>
+    <picture>
+     <img alt="Newston Castle" src="https://github.com/naufalfabian/Jarkom-Modul-3-F03-2022/blob/main/dokumetasi/4-5.png?raw=true">
+    </picture>
 
 
 
@@ -74,17 +85,20 @@ subnet 10.30.3.0 netmask 255.255.255.0 {
 
 Lalu untuk client yang menggunakan interface eth0 static, di ubah menjadi dhcp
 
-**Kemono Park**
+**Kemono Park** 
+    <br>
     <picture>
      <img alt="Kemono Park" src="https://github.com/naufalfabian/Jarkom-Modul-3-F03-2022/blob/main/dokumetasi/4-1.png?raw=true">
     </picture>
     
 **NewstonCastle**
+<br>
     <picture>
      <img alt="Newston Castle" src="https://github.com/naufalfabian/Jarkom-Modul-3-F03-2022/blob/main/dokumetasi/4-2.png?raw=true">
     </picture>
     
 **Eden**
+<br>
     <picture>
      <img alt="Eden" src="https://github.com/naufalfabian/Jarkom-Modul-3-F03-2022/blob/main/dokumetasi/4-3.png?raw=true">
     </picture>
@@ -112,6 +126,35 @@ options {
 
 Lalu lakukan restart bind9 menggunakan `service bind9 restart` dan restart DHPCP server dan DHCP relay
 
+**Kemono Park** 
+    <br>
+    <picture>
+     <img alt="Kemono Park" src="https://github.com/naufalfabian/Jarkom-Modul-3-F03-2022/blob/main/dokumetasi/5-1.png?raw=true">
+    </picture>
+    
+**NewstonCastle**
+<br>
+    <picture>
+     <img alt="Newston Castle" src="https://github.com/naufalfabian/Jarkom-Modul-3-F03-2022/blob/main/dokumetasi/5-2.png?raw=true">
+    </picture>
+    
+**Eden**
+<br>
+    <picture>
+     <img alt="Eden" src="https://github.com/naufalfabian/Jarkom-Modul-3-F03-2022/blob/main/dokumetasi/5-3.png?raw=true">
+    </picture>
+
+**SSSk** 
+    <br>
+    <picture>
+     <img alt="Kemono Park" src="https://github.com/naufalfabian/Jarkom-Modul-3-F03-2022/blob/main/dokumetasi/5-4.png?raw=true">
+    </picture>
+    
+**Garden**
+<br>
+    <picture>
+     <img alt="Newston Castle" src="https://github.com/naufalfabian/Jarkom-Modul-3-F03-2022/blob/main/dokumetasi/5-5.png?raw=true">
+    </picture>
 
 ## 6
 > Lama waktu DHCP server meminjamkan alamat IP kepada Client yang melalui Switch1 selama 5 menit sedangkan pada client yang melalui Switch3 selama 10 menit. Dengan waktu maksimal yang dialokasikan untuk peminjaman alamat IP selama 115 menit. 
