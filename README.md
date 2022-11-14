@@ -53,6 +53,8 @@ Jarkom-Modul-3-F03-2022
 > Client yang melalui Switch1 mendapatkan range IP dari [prefix IP].1.50 - [prefix IP].1.88 dan [prefix IP].1.120 - [prefix IP].1.155
 
 
+
+
 ## 4
 > Client yang melalui Switch3 mendapatkan range IP dari [prefix IP].3.10 - [prefix IP].3.30 dan [prefix IP].3.60 - [prefix IP].3.85
 
@@ -71,6 +73,21 @@ subnet 10.30.3.0 netmask 255.255.255.0 {
 ```
 
 Lalu untuk client yang menggunakan interface eth0 static, di ubah menjadi dhcp
+
+*Kemono Park*
+    <picture>
+     <img alt="https://github.com/naufalfabian/Jarkom-Modul-3-F03-2022/blob/main/dokumetasi/4-1.png?raw=true">
+    </picture>
+    
+*NewstonCastle*
+    <picture>
+     <img alt="https://github.com/naufalfabian/Jarkom-Modul-3-F03-2022/blob/main/dokumetasi/4-2.png?raw=true">
+    </picture>
+    
+*Eden*
+    <picture>
+     <img alt="https://github.com/naufalfabian/Jarkom-Modul-3-F03-2022/blob/main/dokumetasi/4-3.png?raw=true">
+    </picture>
 
 ## 5
 > Client mendapatkan DNS dari WISE dan client dapat terhubung dengan internet melalui DNS tersebut
