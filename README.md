@@ -3,11 +3,11 @@ Jarkom-Modul-3-F03-2022
 
 ### Kelompok F03
 
-| **No** | **Nama**                   | **NRP**    |
-| ------ | -------------------------- | ---------- |
-| 1      | Naufal Fabian Wibowo    | 05111940000223 |
-| 2      | Angela Oryza Prabowo          | 5025201022 |
-| 3      | Helmi Taqiyuddin | 5025201152 |
+| **No** | **Nama**                   | **NRP**    | **Pembagian Pekerjaan** |
+| ------ | -------------------------- | ---------- | ----------------------- |
+| 1      | Naufal Fabian Wibowo    | 05111940000223 | Mengerjakan Lapres |
+| 2      | Angela Oryza Prabowo          | 5025201022 | Mengerjakan nomor 1-11, Menambahkan Dokumentasi |
+| 3      | Helmi Taqiyuddin | 5025201152 | Mengerjakan Lapres |
 
 ``` IP Kelompok F03 = 10.30``` 
 
@@ -52,7 +52,7 @@ Jarkom-Modul-3-F03-2022
 
 > Client yang melalui Switch1 mendapatkan range IP dari [prefix IP].1.50 - [prefix IP].1.88 dan [prefix IP].1.120 - [prefix IP].1.155
 
-**SSSk** 
+**SSS** 
     <br>
     <picture>
      <img alt="Kemono Park" src="https://github.com/naufalfabian/Jarkom-Modul-3-F03-2022/blob/main/dokumetasi/4-4.png?raw=true">
